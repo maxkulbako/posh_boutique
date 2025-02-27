@@ -1,9 +1,8 @@
-"use client";
-import { APP_NAME } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import notFound from "@/assets/not-found.gif";
-import Link from "next/link";
+'use client';
+import { APP_NAME } from '@/lib/constants';
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import Link from 'next/link';
 const NotFoundPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
