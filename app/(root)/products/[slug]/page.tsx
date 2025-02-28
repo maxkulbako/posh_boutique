@@ -5,13 +5,13 @@ import { getProductBySlug } from '@/lib/actions/product.actions';
 import { notFound } from 'next/navigation';
 import ProductPrice from '@/components/shared/product/product-price';
 import ProductImages from '@/components/shared/product/product-images';
+
 interface ProductDetailsPageProps {
   params: Promise<{ slug: string }>;
 }
 
 const ProductDetailsPage = async ({ params }: ProductDetailsPageProps) => {
   const { slug } = await params;
-
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 

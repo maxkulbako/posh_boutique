@@ -6,7 +6,7 @@ import { isRedirectError } from 'next/dist/client/components/redirect-error';
 
 // Sign in the user with credentials
 export async function signInWithCredentials(
-  prevState: unknown,
+  _prevState: unknown,
   formData: FormData
 ) {
   try {
@@ -14,8 +14,6 @@ export async function signInWithCredentials(
       email: formData.get('email'),
       password: formData.get('password'),
     });
-
-    console.log(user);
 
     await signIn('credentials', user);
 
@@ -31,5 +29,5 @@ export async function signInWithCredentials(
 
 // Sign user out
 export async function singOutUser() {
-    await signOut();
+  await signOut();
 }
