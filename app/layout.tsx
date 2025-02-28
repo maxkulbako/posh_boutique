@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "@/assets/styles/globals.css";
-import { APP_NAME, APP_DESCRIPTION, SERVER_URL } from "@/lib/constants";
-import { ThemeProvider } from "next-themes";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import '@/assets/styles/globals.css';
+import { APP_NAME, APP_DESCRIPTION, SERVER_URL } from '@/lib/constants';
+import { ThemeProvider } from 'next-themes';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | APP_NAME`,
+    template: `%s | ${APP_NAME}`,
     default: APP_NAME,
   },
   description: `${APP_DESCRIPTION}`,
