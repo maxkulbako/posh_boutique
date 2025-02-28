@@ -6,24 +6,13 @@ import { Label } from '@/components/ui/label';
 import { signInDefaultValues } from '@/lib/constants';
 import Link from 'next/link';
 import { useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
 import { signInWithCredentials } from '@/lib/actions/user.actions';
 
 const CredentialsSignInFrom = () => {
-  const [data, action] = useActionState(signInWithCredentials, {
+  const [data, action, isPending] = useActionState(signInWithCredentials, {
     success: false,
     message: '',
   });
-
-  const SignInButton = () => {
-    const { pending } = useFormStatus();
-
-    return (
-      <Button disabled={pending} className="w-full" variant="default">
-        {pending ? 'Signing In...' : 'Sign In'}
-      </Button>
-    );
-  };
 
   return (
     <form action={action}>
@@ -52,7 +41,9 @@ const CredentialsSignInFrom = () => {
           />
         </div>
         <div>
-          <SignInButton />
+          <Button disabled={isPending} className="w-full" variant="default">
+            {isPending ? 'Signing In...' : 'Sign In'}
+          </Button>
         </div>
 
         {data && !data.success && (
