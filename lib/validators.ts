@@ -1,11 +1,11 @@
-import { z } from "zod";
-import { formatNumber } from "./utils";
+import { z } from 'zod';
+import { formatNumber } from './utils';
 
 const currency = z
-.string()
-.refine(value => /^\d+(\.\d{2})?$/.test(formatNumber(Number(value))), {
-  message: 'Price must be a number with two decimal places',
-});
+  .string()
+  .refine((value) => /^\d+(\.\d{2})?$/.test(formatNumber(Number(value))), {
+    message: 'Price must be a number with two decimal places',
+  });
 
 // Schema for inserting a product
 export const insertProductSchema = z.object({
@@ -19,4 +19,11 @@ export const insertProductSchema = z.object({
   isFeatured: z.boolean(),
   banner: z.string().nullable(),
   price: currency,
+});
+
+//Schema for sign in users
+
+export const signInFormSchema = z.object({
+  email: z.string().email('Invalid email address'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
 });
