@@ -9,23 +9,22 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import UserButton from './user-button';
 
 const Menu = () => {
   return (
     <div className="flex justify-end gap-3">
+      {/* Regular Menu */}
       <nav className="hidden md:flex w-full max-w-xs gap-1">
         <ModeToggle />
         <Button asChild variant="ghost">
-          <Link href="/card">
+          <Link href="/cart">
             <ShoppingCart className="h-4 w-4" /> Cart
           </Link>
         </Button>
-        <Button asChild>
-          <Link href="/sign-in">
-            <UserIcon className="h-4 w-4" /> Sign in
-          </Link>
-        </Button>
+        <UserButton />
       </nav>
+      {/* Reponsive Sheet Menu */}
       <nav className="md:hidden">
         <Sheet>
           <SheetTrigger className="align-middle">
@@ -35,15 +34,11 @@ const Menu = () => {
             <SheetTitle> Menu</SheetTitle>
             <ModeToggle />
             <Button asChild variant="ghost">
-              <Link href="/card">
+              <Link href="/cart">
                 <ShoppingCart /> Cart
               </Link>
             </Button>
-            <Button asChild>
-              <Link href="/sign-in">
-                <UserIcon /> Sign in
-              </Link>
-            </Button>
+            <UserButton />
             <SheetDescription></SheetDescription>
           </SheetContent>
         </Sheet>
