@@ -16,6 +16,8 @@ import {
   TableCell,
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
+import { formatCurrency } from '@/lib/utils';
+import { Card, CardContent } from '@/components/ui/card';
 
 const CartTable = ({ cart }: { cart?: Cart }) => {
   const router = useRouter();
@@ -114,6 +116,29 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
               </TableBody>
             </Table>
           </div>
+          <Card>
+            <CardContent className="p-4 gap-4">
+              <div className="pb-3 text-xl">
+                Subtotal ({cart.items.reduce((acc, item) => acc + item.qty, 0)}
+                ):
+                <span className="font-bold">
+                  {' '}
+                  {formatCurrency(cart.itemsPrice)}
+                </span>
+              </div>
+              <Button
+                className="w-full"
+                disabled={isPending}
+                onClick={() => {
+                  startTransition(() => {
+                    router.push('/shipping-address');
+                  });
+                }}
+              >
+                <ArrowRight className="w-4 h-4" /> Proceed to Checkout
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       )}
     </>
